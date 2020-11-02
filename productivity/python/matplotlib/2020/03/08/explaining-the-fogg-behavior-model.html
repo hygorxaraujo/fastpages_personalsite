@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Explaining the Fogg Behavior Model | hygorxaraujo</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Explaining the Fogg Behavior Model" />
+<meta name="author" content="Hygor X. Araújo" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="In this post, I would like to explain the Fogg Behavior Model, created by Brian Jeffrey Fogg (B. J. Fogg)." />
+<meta property="og:description" content="In this post, I would like to explain the Fogg Behavior Model, created by Brian Jeffrey Fogg (B. J. Fogg)." />
+<link rel="canonical" href="https://hygorxaraujo.com/productivity/python/matplotlib/2020/03/08/explaining-the-fogg-behavior-model.html" />
+<meta property="og:url" content="https://hygorxaraujo.com/productivity/python/matplotlib/2020/03/08/explaining-the-fogg-behavior-model.html" />
+<meta property="og:site_name" content="hygorxaraujo" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-03-08T00:00:00-06:00" />
+<script type="application/ld+json">
+{"url":"https://hygorxaraujo.com/productivity/python/matplotlib/2020/03/08/explaining-the-fogg-behavior-model.html","@type":"BlogPosting","headline":"Explaining the Fogg Behavior Model","dateModified":"2020-03-08T00:00:00-06:00","datePublished":"2020-03-08T00:00:00-06:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://hygorxaraujo.com/productivity/python/matplotlib/2020/03/08/explaining-the-fogg-behavior-model.html"},"author":{"@type":"Person","name":"Hygor X. Araújo"},"description":"In this post, I would like to explain the Fogg Behavior Model, created by Brian Jeffrey Fogg (B. J. Fogg).","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://hygorxaraujo.com/feed.xml" title="hygorxaraujo" /><!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-114983530-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.css" integrity="sha512-h7nl+xz8wgDlNM4NqKEM4F1NkIRS17M9+uJwIGwuo8vGqIl4BhuCKdxjWEINm+xyrUjNCnK5dCrhM0sj+wTIXw==" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.js" integrity="sha512-/CMIhXiDA3m2c9kzRyd97MTb3MC6OVnx4TElQ7fkkoRghwDf6gi41gaT1PwF270W6+J60uTmwgeRpNpJdRV6sg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/contrib/auto-render.min.js" integrity="sha512-Do7uJAaHZm5OLrIv/yN4w0iG1dbu01kzdMNnFfu/mAqgUk6Nniv2JYHcwH+cNwjqgLcqcuBBk+JRvprLVI8azg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha512-0doc9hKxR3PYwso42RD1p5ySZpzzuDiOwMrdCEh2WdJZCjcmFKc/wEnL+z8fBQrnHoiNWbo+3fiGkOYXBdQp4A==" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement( document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "[%", right: "%]", display: true},
+            {left: "$", right: "$", display: false}
+        ]}
+        );
+    });
+    </script>
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">hygorxaraujo</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About Me</a><a class="page-link" href="/search/">Search</a><a class="page-link" href="/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Explaining the Fogg Behavior Model</h1><p class="page-description">In this post, I would like to explain the Fogg Behavior Model, created by Brian Jeffrey Fogg (B. J. Fogg).</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-03-08T00:00:00-06:00" itemprop="datePublished">
+        Mar 8, 2020
+      </time>• 
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="p-author h-card" itemprop="name">Hygor X. Araújo</span></span>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      3 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/categories/#productivity">productivity</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/categories/#python">python</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/categories/#matplotlib">matplotlib</a>
+        
+      
+      </p>
+    
+
+    
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#References">References </a></li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2020-03-08-explaining-the-fogg-behavior-model.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In this post, I would like to explain the Fogg Behavior Model, created by Brian Jeffrey Fogg (B. J.
+ Fogg).
+<!-- TEASER_END --></p>
+<p>According to B. J. Fogg's research, Behavior ($B$) happens at the intersection of three things:
+our Motivation ($M$), our Ability ($A$), and the Prompt ($P$) to the behavior.</p>
+<p>$B = MAP$</p>
+<p>We can visualize the relationship between motivation, ability and the prompt in a two-dimensional
+graphic.</p>
+<p>I plotted the graphic below using Python and the NumPy and Matplotlib packages.
+I kept the code for anyone who is interested in how to do it.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="p">{</span> <span class="c1"># text dict for easier translation</span>
+    <span class="s1">'ability'</span><span class="p">:</span><span class="s1">'Ability'</span><span class="p">,</span>
+    <span class="s1">'motivation'</span><span class="p">:</span><span class="s1">'Motivation'</span><span class="p">,</span>
+    <span class="s1">'title'</span><span class="p">:</span><span class="s1">'Fogg Behavior Model'</span><span class="p">,</span>
+    <span class="s1">'bmap'</span><span class="p">:</span><span class="s1">'B = MAP'</span><span class="p">,</span>
+    <span class="s1">'bmap_sub'</span><span class="p">:</span><span class="s1">'At the same</span><span class="se">\n</span><span class="s1">moment'</span><span class="p">,</span>
+    <span class="s1">'ability_axis'</span><span class="p">:(</span><span class="s1">'Hard to Do'</span><span class="p">,</span> <span class="s1">'Easy to Do'</span><span class="p">),</span>
+    <span class="s1">'motivation_axis'</span><span class="p">:(</span><span class="s1">'High'</span><span class="p">,</span> <span class="s1">'Low'</span><span class="p">),</span>
+    <span class="s1">'action_line'</span><span class="p">:</span><span class="s1">'Action Line'</span><span class="p">,</span>
+    <span class="s1">'prompts'</span><span class="p">:</span><span class="s1">'Prompts'</span><span class="p">,</span>
+    <span class="s1">'prompts_succeed'</span><span class="p">:</span><span class="s1">'succeed here'</span><span class="p">,</span>
+    <span class="s1">'prompts_fail'</span><span class="p">:</span><span class="s1">'fail here'</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">blue_color</span> <span class="o">=</span> <span class="s1">'#06abe1'</span>
+<span class="n">green_color</span> <span class="o">=</span> <span class="s1">'#81a050'</span>
+<span class="n">light_green_color</span> <span class="o">=</span> <span class="s1">'#d2e5c9'</span>
+<span class="n">red_color</span> <span class="o">=</span> <span class="s1">'#ff2222'</span>
+<span class="n">light_red_color</span> <span class="o">=</span> <span class="s1">'#ffcbcb'</span>
+
+<span class="c1"># Data for plotting</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+<span class="c1"># y = 1.05 - sqrt(1 - (x - 1.05) ** 2)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mf">1.05</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">((</span><span class="n">xi</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="k">for</span> <span class="n">xi</span> <span class="ow">in</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mf">1.05</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">])</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">green_color</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="n">text</span><span class="p">[</span><span class="s1">'ability'</span><span class="p">],</span>
+       <span class="n">ylabel</span><span class="o">=</span><span class="n">text</span><span class="p">[</span><span class="s1">'motivation'</span><span class="p">],</span>
+       <span class="n">title</span><span class="o">=</span><span class="n">text</span><span class="p">[</span><span class="s1">'title'</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">'both'</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">'both'</span><span class="p">,</span><span class="n">length</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">light_red_color</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">light_green_color</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.65</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="n">text</span><span class="p">[</span><span class="s1">'bmap'</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">blue_color</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.82</span><span class="p">,</span> <span class="mf">0.80</span><span class="p">,</span> <span class="n">text</span><span class="p">[</span><span class="s1">'bmap_sub'</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">blue_color</span><span class="p">)</span>
+
+<span class="n">prompts_size</span><span class="o">=</span><span class="mi">15</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">text</span><span class="p">[</span><span class="s1">'prompts'</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="n">prompts_size</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">blue_color</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">,</span> <span class="n">text</span><span class="p">[</span><span class="s1">'prompts_succeed'</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="n">prompts_size</span><span class="o">*</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">green_color</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.08</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">text</span><span class="p">[</span><span class="s1">'prompts'</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="n">prompts_size</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">blue_color</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.08</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="n">text</span><span class="p">[</span><span class="s1">'prompts_fail'</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="n">prompts_size</span><span class="o">*</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">red_color</span><span class="p">)</span>
+
+<span class="c1"># set x axis ticks names</span>
+<span class="n">xticks</span> <span class="o">=</span> <span class="p">[</span><span class="s1">''</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">xticks</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">xticks</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="n">text</span><span class="p">[</span><span class="s1">'ability_axis'</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">xticks</span><span class="p">)</span>
+<span class="c1"># set y axis ticks names</span>
+<span class="n">yticks</span> <span class="o">=</span> <span class="p">[</span><span class="s1">''</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">-</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">yticks</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">yticks</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">text</span><span class="p">[</span><span class="s1">'motivation_axis'</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">yticks</span><span class="p">)</span>
+
+<span class="c1"># set axis' limits</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
+
+<span class="n">tp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="mf">0.28</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">))</span>
+<span class="n">trans_angle</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">transData</span><span class="o">.</span><span class="n">transform_angles</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="mi">315</span><span class="p">,)),</span>
+                                                   <span class="n">tp</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">tp</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">tp</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">text</span><span class="p">[</span><span class="s1">'action_line'</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+         <span class="n">rotation</span><span class="o">=</span><span class="n">trans_angle</span><span class="p">,</span> <span class="n">rotation_mode</span><span class="o">=</span><span class="s1">'anchor'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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%0A">
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Image based in the Fogg Behavior Model (as presented in the book), also inspired by
+<a href="https://getyouclients.co/wp-content/uploads/2019/08/BJ-Fogg-Behavior-Model.jpg">this one</a> found
+in Google Images.</li>
+</ul>
+<p>Looking at the graphic we can see that if there is a prompt for a behavior, but it is something too
+hard to do or if the motivation is low, the behavior will fail.</p>
+<p>On the contrary, if the behavior is easy to do and we have the motivation when the prompt surges
+ the behavior will be a success!</p>
+<p>Thinking in the process of building new habits, we could use this model as a guide on how to
+develop a new one. After choosing the right behavior, make sure you have the right motivation
+for it and make it really easy to do it! In other words, you should make it as simple and small
+so that there is no chance you will not do it.
+In this way, each time you are successful with your behavior you are taking a step in making
+it a new habit.</p>
+<p>A similar conclusion can be thought in the process of stopping a bad habit, make it really hard
+to do, so that even when the prompt arises you will be less likely to do it.</p>
+<p>This is the suggested template by B. J. Fogg to create a new behavior:</p>
+<blockquote>
+<p>After I ..., I will ... . Then, I celebrate!</p>
+</blockquote>
+<p>The celebration is an important step for you to connect the behavior with something positive that
+ should be repeated.</p>
+<p>If you think the behavior you tried to create is not working, try this troubleshoot method:1. Check prompt2. Check ability</p>
+<ol>
+<li>Check motivation</li>
+</ol>
+<p>And keep trying out and learning more about yourself, one small step at a time.</p>
+<h2 id="References">
+<a class="anchor" href="#References" aria-hidden="true"><span class="octicon octicon-link"></span></a>References<a class="anchor-link" href="#References"> </a>
+</h2>
+<ul>
+<li>Book: <a href="https://www.amazon.com.br/Tiny-Habits-Changes-Everything-English-ebook/dp/B07R6VQBSZ/ref=tmm_kin_title_0?_encoding=UTF8&amp;qid=1583682661&amp;sr=8-1">Tiny Habits: The Small Changes That Change Everything (English Edition)</a>
+</li>
+<li>Site: <a href="https://www.bjfogg.com/">B.J. Fogg</a>
+</li>
+<li>Site: <a href="https://www.tinyhabits.com/">Tiny Habits</a>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="hygorxaraujo/fastpages_personalsite"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/productivity/python/matplotlib/2020/03/08/explaining-the-fogg-behavior-model.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>My personal site where I share my thoughts and things I am learning about.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/hygorxaraujo" title="hygorxaraujo"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://stackoverflow.com/users/3006483" title="3006483"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#stackoverflow"></use></svg></a></li><li><a rel="me" href="https://www.linkedin.com/in/hygorxaraujo" title="hygorxaraujo"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#linkedin"></use></svg></a></li><li><a rel="me" href="https://twitter.com/hygorxaraujo" title="hygorxaraujo"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

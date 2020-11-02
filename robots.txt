@@ -1,1 +1,1 @@
-Sitemap: https://hygorxaraujo.github.io/fastpages_personalsite/sitemap.xml
+Sitemap: https://hygorxaraujo.com/sitemap.xml
