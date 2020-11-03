@@ -35,14 +35,17 @@ url: "https://hygorxaraujo.com" # the base hostname & protocol for your site, e.
 # 3. You must replace the parameter `baseurl` in _action_files/settings.ini with the same value as you set here but WITHOUT QUOTES.
 #
 baseurl: "" # the subpath of your site, e.g. "/blog".
-email: contact@hygorxaraujo.com
+
+author:
+  name: "Hygor X. Araújo"
+  email: "contact@hygorxaraujo.com"
 
 # Github and twitter are optional:
 minima:
   social_links:
     twitter: hygorxaraujo
     github: hygorxaraujo
-    stackoverflow: "3006483"
+    stackoverflow: "2550932"
     linkedin: hygorxaraujo
 
 # Set this to true to get LaTeX math equation support
@@ -67,6 +70,7 @@ exclude:
   - docker-compose.yml
   - action.yml
   - Makefile
+  - .idea
 
 # this setting allows you to keep pages organized in the _pages folder
 include:
